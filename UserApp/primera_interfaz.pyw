@@ -11,12 +11,6 @@ from tensorflow import keras
 from CycleGan import CycleGan, get_resnet_generator, get_discriminator, generator_loss_fn, discriminator_loss_fn
 
 
-# def cerrarVentana():
-#     val = messagebox.askquestion("Exit", "Close application?")
-#     if val == "yes":
-#         root.destroy()
-
-
 def saveImage(img1, img2, img3, img4):
     messagebox.showinfo("Images saved", "Images saved successfully.")
     img1.save("predicted_img_1.png")
@@ -24,7 +18,7 @@ def saveImage(img1, img2, img3, img4):
     img3.save("predicted_img_3.png")
     img4.save("predicted_img_4.png")
 
-def generateImage(path):     # RECORTAR IMAGEN PARA Q SEA CUADRADA
+def generateImage(path):
     global btnGenerate
 
     input_img_size = (256, 256, 3)
@@ -134,11 +128,6 @@ def showImage(path):
 
     img = Image.open(path)
 
-    # Cut it to make it square
-    # altura, ancho, canales = img.shape
-    # pad = int((ancho - altura) / 2)
-    # img = img[0:int(altura), pad:pad + int(altura)]
-
     img = img.resize((600, 600), Image.LANCZOS)
     img = ImageTk.PhotoImage(img)
 
@@ -162,7 +151,16 @@ def uploadImage():
     file = filedialog.askopenfilename(title="Titulo de la ventana", filetypes=[("Archivos PNG", "*.png")])  # añadir initialdir= "C:/" si queremos que se abran en un directorio especifico
     if file != "":
         initFrame.pack_forget()
-        showImage(file)
+
+        # Cut it to make it square
+        img = cv2.imread(file)
+        altura, ancho, canales = img.shape
+        pad = int((ancho - altura) / 2)
+        img = img[0:int(altura), pad:pad + int(altura)]
+        filename = 'uploadedImg.png'
+        cv2.imwrite(filename, img)
+
+        showImage(filename)
 
 
 def takePhoto():

@@ -2,6 +2,7 @@
 
 This document presents the Final Degree Work project of the Video Games Design and
 Development Degree by Lucía González García.
+
 The primary aim of this project is to enhance the creation and personalization of
 digital avatars using Deep Learning techniques, particularly Generative Adversarial Networks
 (GAN) technology. The objective is to enable users to generate avatars based on

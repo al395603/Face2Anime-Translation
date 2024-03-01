@@ -14,4 +14,4 @@ output.
 
 *The CycleGANModel folder contains the developed neural model together with the used dataset.*
 
-*The UserApp folder contains the implementation of the user application. To use the application run the file user_app.py in a programming environment (e.g. PyCharm).*
+*The UserApp folder contains the implementation of the user application. To use the application run the file user_app.py.*
